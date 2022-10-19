@@ -35,7 +35,8 @@ class TaxCalculator{ 														// class with calculateTax method
 	}
 public class CalculatorSimulator { 												// class with main method
 
-	public static void main(String[] args) throws CountryNotValidException, EmployeeNameInvalidException, TaxNotEligibleException{
+	public static void main(String[] args) 
+		throws CountryNotValidException, EmployeeNameInvalidException, TaxNotEligibleException{
 		// TODO Auto-generated method stub
 		TaxCalculator tax = new TaxCalculator(); 									// creating object of the previous class TaxCalculator
 		//calling method with different inputs
