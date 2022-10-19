@@ -4,16 +4,15 @@ class InvailException extends Exception { 									// sub class of exception
 	public InvailException(String str) {
 		super(str);}}
 class TaxCalculator{ 												// class with calculateTax method
-	String empName; boolean isIndian; double empSal; double taxAmount; 					//declaring variables
 	public double calculateTax(String empName, double empSal, boolean isIndian) throws InvailException{
-		this.empName = empName; this.isIndian = isIndian; this.empSal=empSal;
+		double taxAmount = 0;										//declaring and initializing taxAmount variable to store the calculated amount of tax
 		if(isIndian==false) { 										// checking if employee is an indian
 			throw new InvailException("CountryNotValidException");
 		}
 		else if(empName==null) { 									// checking if employee name is empty
 			throw new InvailException("EmployeeNameInvalidException");
 		}
-		else if(empSal>=10000){ 									//logic-calculating tax
+		else if (empSal>=10000){ 									//calculating tax
 			if(empSal>=100000 && isIndian==true)
 				taxAmount=empSal*8/100;
 			else if(empSal<100000 && empSal>=50000 && isIndian==true)
@@ -23,7 +22,7 @@ class TaxCalculator{ 												// class with calculateTax method
 			else if(empSal<30000 && empSal>=10000 && isIndian==true)
 				taxAmount=empSal*4/100;
 			return taxAmount;}
-		else (){ 											// checking if employee salary is too low to pay tax
+		else { 												// checking if employee salary is too low to pay tax
 			throw new InvailException("TaxNotEligibleException");}
 	}
 	}
