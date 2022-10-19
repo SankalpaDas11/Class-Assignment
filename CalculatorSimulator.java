@@ -1,18 +1,25 @@
 package Exception;
 import java.lang.*;
-class InvailException extends Exception { 									// sub class of exception
-	public InvailException(String str) {
+class CountryNotValidException extends Exception { 										// 1st sub class of exception
+	public CountryNotValidException(String str) {
 		super(str);}}
-class TaxCalculator{ 												// class with calculateTax method
-	public double calculateTax(String empName, double empSal, boolean isIndian) throws InvailException{
-		double taxAmount = 0;										//declaring and initializing taxAmount variable to store the calculated amount of tax
-		if(isIndian==false) { 										// checking if employee is an indian
-			throw new InvailException("CountryNotValidException");
+class EmployeeNameInvalidException extends Exception { 										// 2nd sub class of exception
+	public EmployeeNameInvalidException(String str) {
+		super(str);}}
+class TaxNotEligibleException extends Exception { 										// 3rd sub class of exception
+	public TaxNotEligibleException(String str) {
+		super(str);}}
+class TaxCalculator{ 														// class with calculateTax method
+	public double calculateTax(String empName, double empSal, boolean isIndian) 
+			throws CountryNotValidException, EmployeeNameInvalidException, TaxNotEligibleException{
+		double taxAmount = 0;
+		if(isIndian==false) { 												// checking if employee is an indian
+			throw new CountryNotValidException("The employee should be an Indian citizen for calculating tax");
 		}
-		else if(empName==null) { 									// checking if employee name is empty
-			throw new InvailException("EmployeeNameInvalidException");
+		else if(empName==null) { 											// checking if employee name is empty
+			throw new EmployeeNameInvalidException("The employee name cannot be empty");
 		}
-		else if (empSal>=10000){ 									//calculating tax
+		else if (empSal>=10000){ //calculating tax
 			if(empSal>=100000 && isIndian==true)
 				taxAmount=empSal*8/100;
 			else if(empSal<100000 && empSal>=50000 && isIndian==true)
@@ -22,28 +29,25 @@ class TaxCalculator{ 												// class with calculateTax method
 			else if(empSal<30000 && empSal>=10000 && isIndian==true)
 				taxAmount=empSal*4/100;
 			return taxAmount;}
-		else { 												// checking if employee salary is too low to pay tax
-			throw new InvailException("TaxNotEligibleException");}
+		else { 														// checking if employee salary is too low to pay tax
+			throw new TaxNotEligibleException("The employee does not need to pay tax");}
 	}
 	}
-public class CalculatorSimulator { 										// class with main method
+public class CalculatorSimulator { 												// class with main method
 
-	public static void main(String[] args) throws InvailException{
+	public static void main(String[] args) throws CountryNotValidException, EmployeeNameInvalidException, TaxNotEligibleException{
 		// TODO Auto-generated method stub
-		TaxCalculator tax = new TaxCalculator(); 							// creating object of the previous class TaxCalculator
+		TaxCalculator tax = new TaxCalculator(); 									// creating object of the previous class TaxCalculator
 		//calling method with different inputs
 		{try{System.out.print("The amount is : " + tax.calculateTax("Ron",34000,false));}
-		catch(InvailException u) {
-			System.out.println("The employee should be an Indian");
+		catch(CountryNotValidException u) {
 			System.out.println(u.getMessage());}}
 		{try{System.out.print("The amount is : " + tax.calculateTax("Tim",1000,true));}
-		catch(InvailException u) {
-			System.out.println("The employee does not need to pay tax");
+		catch(TaxNotEligibleException u) {
 			System.out.println(u.getMessage());}}
 		System.out.println("The amount is : " + tax.calculateTax("Jack",55000,true));
 		{try{System.out.print("The amount is : " + tax.calculateTax(null,30000,true));}
-		catch(InvailException u) {
-			System.out.println("The employee name cannot be empty");
+		catch(EmployeeNameInvalidException u) {
 			System.out.println(u.getMessage());}}
 	}
 }
