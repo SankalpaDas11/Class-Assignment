@@ -13,7 +13,7 @@ class TaxCalculator{ 												// class with calculateTax method
 		else if(empName==null) { 									// checking if employee name is empty
 			throw new InvailException("EmployeeNameInvalidException");
 		}
-		else if{ 											//logic-calculating tax
+		else if(empSal>=10000){ 									//logic-calculating tax
 			if(empSal>=100000 && isIndian==true)
 				taxAmount=empSal*8/100;
 			else if(empSal<100000 && empSal>=50000 && isIndian==true)
@@ -23,7 +23,7 @@ class TaxCalculator{ 												// class with calculateTax method
 			else if(empSal<30000 && empSal>=10000 && isIndian==true)
 				taxAmount=empSal*4/100;
 			return taxAmount;}
-		else (empSal<10000){ 										// checking if employee salary is too low to pay tax
+		else (){ 											// checking if employee salary is too low to pay tax
 			throw new InvailException("TaxNotEligibleException");}
 	}
 	}
