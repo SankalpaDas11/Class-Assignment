@@ -27,11 +27,11 @@ class TaxCalculator{ // class with calculateTax method
 			return taxAmount;}
 	}
 	}
-public class CalculatorSimulator { // clas with main method
+public class CalculatorSimulator { // class with main method
 
 	public static void main(String[] args) throws InvailException{
 		// TODO Auto-generated method stub
-		TaxCalculator tax = new TaxCalculator(); // creating object of the previousd class TaxCalculator
+		TaxCalculator tax = new TaxCalculator(); // creating object of the previous class TaxCalculator
 		//calling method with different inputs
 		{try{System.out.print("The amount is : " + tax.calculateTax("Ron",34000,false));}
 		catch(InvailException u) {
@@ -41,7 +41,7 @@ public class CalculatorSimulator { // clas with main method
 		catch(InvailException u) {
 			System.out.println("The employee does not need to pay tax");
 			System.out.println(u.getMessage());}}
-		System.out.print("The amount is : " + tax.calculateTax("Jack",55000,true));
+		System.out.println("The amount is : " + tax.calculateTax("Jack",55000,true));
 		{try{System.out.print("The amount is : " + tax.calculateTax(null,30000,true));}
 		catch(InvailException u) {
 			System.out.println("The employee name cannot be empty");
