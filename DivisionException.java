@@ -24,22 +24,22 @@ java.util.InputMismatchException
 */
 
 package Exception;
-import java.util.InputMismatchException;// importing InputMismatchException Package
-import java.util.Scanner;      //importing Scanner Class
+import java.util.InputMismatchException;		// importing InputMismatchException Package
+import java.util.Scanner;     				//importing Scanner Class
 public class DivisionException {
 	public static void main(String[] args) {
 		        try {
-		            Scanner scan = new Scanner(System.in);//creating object of Scanner class to take inputs
+		            Scanner scan = new Scanner(System.in);			//creating object of Scanner class to take inputs
 		            System.out.println("Enter the values of x and y : ");
-		            int x = scan.nextInt();//taking input for x
+		            int x = scan.nextInt();					//taking input for x
 		            int y = scan.nextInt();//taking input for y
 		            System.out.println(x/y);//printing the division
 		        } 
-		        catch (ArithmeticException AE) {//using catch block trying to catch the exception if any ArithmeticException occurs
-		            System.out.println(AE);//printing the ArithmeticException
+		        catch (ArithmeticException AE) {				//using catch block trying to catch the exception if any ArithmeticException occurs
+		            System.out.println(AE);					//printing the ArithmeticException
 		        } 
-		        catch (InputMismatchException IME) {//using catch block trying to catch the exception if any InputMismatchException exception occurs
-		            System.out.println(IME);//printing the InputMismatchException
-		        } 
-		    }
-		}
+		        catch (InputMismatchException IME) {				//using catch block trying to catch the exception if any InputMismatchException exception occurs
+		            System.out.println(IME);					//printing the InputMismatchException
+		        	} 
+	}
+}
